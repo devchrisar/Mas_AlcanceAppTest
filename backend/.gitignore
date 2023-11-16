@@ -1,12 +1,6 @@
 # Dependencias
 node_modules/
 
-# Archivos generados por Express Generator
-/public/
-/views/
-/routes/
-app.js
-
 # Archivos de configuración
 .env
 
