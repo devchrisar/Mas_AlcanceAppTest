@@ -1,26 +1,40 @@
-const { Router } = require("express");
+import { Router } from "express";
+import getAllUsers from "../controllers/users.controller.js";
+/*import {
+  getPosts,
+  getAlbumsByUserId,
+  getAllRequests,
+  createRequest,
+  editRequest,
+  deleteRequest,
+} from "../controllers/request.controller";
+*/
 const router = Router();
-const userController = require("../controllers/users.controller");
-const resourceController = require("../controllers/request.controller");
 
 // ?Rutas para usuarios
-router.route("/users").get(userController.getAllUsers);
+router
+    .route("/api/users")
+      .get(getAllUsers)
 
 // ?Rutas para publicaciones (posts)
-router.route("/posts").get(resourceController.getPosts);
+/*router
+      .route("/posts")
+        .get(getPosts)
 
 // ?Rutas para álbumes de un usuario específico
-router.route("/albums/:userId").get(resourceController.getAlbumsByUserId);
+/*router
+        .route("/albums/:userId")
+          .get(getAlbumsByUserId)
 
 // ?Rutas para registros de peticiones
-router
-  .route("/requests")
-  .get(resourceController.getAllRequests)
-  .post(resourceController.createRequest);
+/*router
+        .route("/requests")
+          .get(getAllRequests)
+          .post(createRequest)
 
-router
-  .route("/requests/:requestId")
-  .patch(resourceController.editRequest)
-  .delete(resourceController.deleteRequest);
-
-module.exports = router;
+/*router
+        .route("/requests/:requestId")
+          .patch(editRequest)
+          .delete(deleteRequest)
+*/
+export default router;
