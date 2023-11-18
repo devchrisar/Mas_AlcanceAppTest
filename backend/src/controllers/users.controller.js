@@ -4,7 +4,7 @@ import axios from "axios";
 async function getAllUsers(req, res, next) {
   try {
     const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/users"
+      "https://jsonplaceholder.typicode.com/users",
     );
     const users = response.data;
     res.json(users);

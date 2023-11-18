@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model } from "mongoose";
 
 const requestSchema = new Schema({
   date: { type: Date, default: Date.now }, // Fecha de la petición
@@ -10,6 +10,6 @@ const requestSchema = new Schema({
 // Índice para mejorar la búsqueda por fecha
 requestSchema.index({ date: 1 });
 
-const RequestModel = model('Request', requestSchema);
+const RequestModel = model("Request", requestSchema);
 
 export default RequestModel;

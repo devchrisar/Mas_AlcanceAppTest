@@ -50,7 +50,7 @@ class Server {
       Redoc({
         title: "API Docs",
         specUrl: "/api/spec",
-      })
+      }),
     );
   }
   routes() {
