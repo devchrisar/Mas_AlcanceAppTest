@@ -5,6 +5,7 @@ import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
+import connectDB from "../src/models/db.model.js";
 //? rutas
 import routes from "../src/routes/index.routes.js";
 
@@ -19,6 +20,8 @@ class Server {
     this.middlewares();
     //? consumir rutas
     this.routes();
+    //? conectar a la base de datos
+    connectDB();
   }
   middlewares() {
     //? allow CORS (Cross-Origin Resource Sharing) for all origins
