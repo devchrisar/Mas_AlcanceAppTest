@@ -69,13 +69,13 @@ class Server {
       res.locals.error = req.app.get("env") === "development" ? err : {};
 
       // render the error page in folder views with file error.pug
-      res.status(err.status || 500);
+      res.status(err.status ?? 500);
       res.render("error");
     });
   }
   listen() {
     this.app.listen(this.port, () => {
-      console.log("Server running on port " + this.port);
+      console.log(`Server running on port ${this.port}`);
     });
   }
 }
