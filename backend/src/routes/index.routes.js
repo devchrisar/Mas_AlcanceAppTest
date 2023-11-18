@@ -20,14 +20,17 @@ router.route("/api/").get((req, res) => {
 router.route("/api/users").get(getAllUsers);
 
 // ?Ruta para leer (GET)  publicaciones (posts)
-router.route("/api/posts").get(getPosts)
+router.route("/api/posts").get(getPosts);
 
 // ?Ruta para leer (GET) álbumes de un usuario específico
-router.route("/api/albums/").get(getAlbumsByUserId)
+router.route("/api/albums/").get(getAlbumsByUserId);
 
 // ?Ruta para crear (GET, POST) el registros de la peticion
-router.route("/api/requests").get(getAllRequests).post(createRequest)
+router.route("/api/requests").get(getAllRequests).post(createRequest);
 // ?Ruta para editar y eliminar (PATCH/PUT, DELETE) el registros de la peticion
-router.route("/api/requests/:requestId").patch(editRequest).delete(deleteRequest)
+router
+  .route("/api/requests/:requestId")
+  .patch(editRequest)
+  .delete(deleteRequest);
 
 export default router;
