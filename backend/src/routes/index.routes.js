@@ -12,16 +12,12 @@ import getAllUsers from "../controllers/users.controller.js";
 const router = Router();
 
 // ?Ruta de inicio
-router
-    .route("/api/")
-      .get((req, res) => {
-        res.render("index", { title: "+Alcance API" });
-      });
+router.route("/api/").get((req, res) => {
+  res.render("index", { title: "+Alcance API" });
+});
 
 // ?Rutas para usuarios
-router
-    .route("/api/users")
-      .get(getAllUsers)
+router.route("/api/users").get(getAllUsers);
 
 // ?Rutas para publicaciones (posts)
 /*router

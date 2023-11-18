@@ -6,7 +6,7 @@ body {
 }
 
 h1 {
-  color: #007BFF;
+  color: #007bff;
 }
 
 p {
@@ -14,7 +14,7 @@ p {
 }
 
 a {
-  color: #00B7FF;
+  color: #00b7ff;
   text-decoration: none;
 }
 
@@ -28,14 +28,14 @@ a:hover {
 }
 
 .header {
-  background-color: #007BFF;
+  background-color: #007bff;
   color: #fff;
   padding: 20px;
   text-align: center;
 }
 
 .footer {
-  background-color: #007BFF;
+  background-color: #007bff;
   color: #fff;
   padding: 10px;
   text-align: center;
