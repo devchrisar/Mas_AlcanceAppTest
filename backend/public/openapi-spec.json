@@ -1,0 +1,58 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "+Alcance Api Documentation (PRUEBA TECNICA JUNIOR DEV)",
+    "version": "1.0.0",
+    "description": "Introduction\n\nThis API is documented in OpenAPI format and serves as the backbone for +Alcance. It is developed in NodeJS and designed to interact with external APIs, providing information about users, albums, posts, comments, and photos from https://jsonplaceholder.typicode.com/. The application logs each request made, capturing the date, the method used, and the returned data.\n\nOpenAPI Specification\n\nThe API has been extended to showcase the features of the ReDoc documentation. In addition to the standard OpenAPI syntax, the API uses a few vendor extensions.",
+    "x-logo": {
+      "url": "https://drive.google.com/uc?export=view&id=1PVhOI0kQfFaitBgUJ3JymdzHzMqNlYEt",
+      "altText": "Logo Alt Text"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Local server"
+    }
+  ],
+  "paths": {
+    "/api/users": {
+      "get": {
+        "summary": "Get a list of users",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id": 1,
+                    "name": "John Doe",
+                    "email": "john@example.com"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/docs": {
+      "get": {
+        "summary": "Get API documentation",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "text/html": {}
+            }
+          }
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "More about +Alcance",
+    "url": "https://www.masalcance.com/"
+  }
+}

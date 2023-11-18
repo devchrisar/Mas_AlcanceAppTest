@@ -11,6 +11,13 @@ import getAllUsers from "../controllers/users.controller.js";
 */
 const router = Router();
 
+// ?Ruta de inicio
+router
+    .route("/api/")
+      .get((req, res) => {
+        res.render("index", { title: "+Alcance API" });
+      });
+
 // ?Rutas para usuarios
 router
     .route("/api/users")
@@ -18,22 +25,22 @@ router
 
 // ?Rutas para publicaciones (posts)
 /*router
-      .route("/posts")
+      .route("/api/posts")
         .get(getPosts)
 
 // ?Rutas para álbumes de un usuario específico
 /*router
-        .route("/albums/:userId")
+        .route("/api/albums/:userId")
           .get(getAlbumsByUserId)
 
 // ?Rutas para registros de peticiones
 /*router
-        .route("/requests")
+        .route("/api/requests")
           .get(getAllRequests)
           .post(createRequest)
 
 /*router
-        .route("/requests/:requestId")
+        .route("/api/requests/:requestId")
           .patch(editRequest)
           .delete(deleteRequest)
 */

@@ -5,6 +5,7 @@ import path, { dirname } from "path";
 import { fileURLToPath } from "url";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
+import Redoc from "redoc-express";
 import connectDB from "../src/models/db.model.js";
 //? rutas
 import routes from "../src/routes/index.routes.js";
@@ -29,6 +30,10 @@ class Server {
     //? view engine setup
     this.app.set("views", path.join(__dirname, "../src/views"));
     this.app.set("view engine", "pug");
+    //? serves documentation spec file
+    this.app.get("/api/spec", (req, res) => {
+      res.sendFile(path.join(__dirname, "../public/openapi-spec.json"));
+    });
     //? logs all requests to the console
     this.app.use(logger("dev"));
     //? parses incoming requests with JSON payloads
@@ -39,11 +44,19 @@ class Server {
     this.app.use(cookieParser());
     //? serves static files located in public
     this.app.use(express.static(path.join(__dirname, "../public")));
-    //? atrapa errores 404 y los envía al manejador de errores
+    //? serves documentation
+    this.app.use(
+      "/api/docs",
+      Redoc({
+        title: "API Docs",
+        specUrl: "/api/spec",
+      })
+    );
   }
   routes() {
     this.app.use("/", routes);
 
+    //? atrapa errores 404 y los envía al manejador de errores
     //! catch 404 and forward to error handler
     this.app.use((req, res, next) => {
       next(createError(404));

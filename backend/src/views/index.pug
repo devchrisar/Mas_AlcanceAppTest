@@ -1,5 +1,11 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  div.container
+  div.header
+    h1= title
+    p Welcome to #{title}
+    b for more information, please visit the following link: 
+    a(href='http://localhost:8080/api/docs') #{title} docs
+  div.footer
+    p #{title} is a project made with ❤️ by devchrisar
