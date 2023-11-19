@@ -8,8 +8,12 @@ import {
   editRequest,
   deleteRequest,
 } from "../controllers/request.controller.js";
+import requestLogger from "../../middlewares/requestLogger.js";
 
 const router = Router();
+
+//? middleware para capturar la solicitud
+router.use(requestLogger);
 
 // ?Ruta de inicio
 router.route("/api/").get((req, res) => {
@@ -25,7 +29,7 @@ router.route("/api/posts").get(getPosts);
 // ?Ruta para leer (GET) álbumes de un usuario específico
 router.route("/api/albums/").get(getAlbumsByUserId);
 
-// ?Ruta para crear (GET, POST) el registros de la peticion
+// ?Ruta para leer y crear (GET, POST) el registros de la peticion
 router.route("/api/requests").get(getAllRequests).post(createRequest);
 // ?Ruta para editar y eliminar (PATCH/PUT, DELETE) el registros de la peticion
 router
