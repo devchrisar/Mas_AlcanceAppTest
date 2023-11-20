@@ -1,5 +1,5 @@
 import { Router } from "express";
-import getAllUsers from "../controllers/users.controller.js";
+import {getAllUsers, createUser, loginUser} from "../controllers/users.controller.js";
 import {
   getPosts,
   getAlbumsByUserId,
@@ -9,6 +9,7 @@ import {
   deleteRequest,
 } from "../controllers/request.controller.js";
 import requestLogger from "../../middlewares/requestLogger.js";
+import { authenticate } from "../../middlewares/auth.js";
 
 const router = Router();
 
@@ -23,6 +24,10 @@ router.route("/api/").get((req, res) => {
 // ?Ruta para leer (GET) usuarios
 router.route("/api/users").get(getAllUsers);
 
+//? Ruta para registrar e iniciar sesión (POST) usuarios
+router.route("/api/register").post(createUser);
+router.route("/api/login").post(loginUser);
+
 // ?Ruta para leer (GET)  publicaciones (posts)
 router.route("/api/posts").get(getPosts);
 
@@ -31,9 +36,10 @@ router.route("/api/albums/").get(getAlbumsByUserId);
 
 // ?Ruta para leer y crear (GET, POST) el registros de la peticion
 router.route("/api/requests").get(getAllRequests).post(createRequest);
-// ?Ruta para editar y eliminar (PATCH/PUT, DELETE) el registros de la peticion
+// ?Ruta para editar y eliminar (PATCH/PUT, DELETE) el registros de la peticion - SOLO (AUTENTICADO)
 router
   .route("/api/requests/:requestId")
+  .all(authenticate)
   .patch(editRequest)
   .delete(deleteRequest);
 
