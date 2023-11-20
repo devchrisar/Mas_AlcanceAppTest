@@ -1,5 +1,24 @@
 import RequestModel from "../src/models/audit.model.js";
 
+//? Función para capturar la respuesta de la solicitud
+const captureResponseData = async (req, res) => {
+  try {
+    if (res?.locals?.responseData) {
+      //? si hay un objeto res y contiene un objeto locals con un objeto responseData, captura la respuesta de la solicitud
+      return await res.locals.responseData;
+    }
+    if (res?.hasOwnProperty("body"))  {
+      //? si la solicitud contiene un cuerpo, captura la respuesta de la solicitud
+      return await res.body;
+    }
+    //? si no hay respuesta, retorna un objeto vacío
+    return {};
+  } catch (error) {
+    console.error("Error al capturar la respuesta:", error.message);
+    return {};
+  }
+};
+
 const requestLogger = async (req, res, next) => {
   try {
     const { method, originalUrl, body } = req;
@@ -24,25 +43,6 @@ const requestLogger = async (req, res, next) => {
     next();
   } catch (error) {
     next(error);
-  }
-};
-
-//? Función para capturar la respuesta de la solicitud
-const captureResponseData = async (req, res) => {
-  try {
-    if (res && res.locals && res.locals.responseData) {
-      //? si hay un objeto res y contiene un objeto locals con un objeto responseData, captura la respuesta de la solicitud
-      return res.locals.responseData;
-    }
-    if (res.hasOwnProperty("body")) {
-      //? si la solicitud contiene un cuerpo, captura la respuesta de la solicitud
-      return res.body;
-    }
-    //? si no hay respuesta, retorna un objeto vacío
-    return {};
-  } catch (error) {
-    console.error("Error al capturar la respuesta:", error.message);
-    return {};
   }
 };
 

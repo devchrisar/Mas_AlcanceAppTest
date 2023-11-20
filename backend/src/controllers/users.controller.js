@@ -66,7 +66,8 @@ async function createUser(req, res, next) {
 
     return res.status(201).json({ message: "Usuario registrado exitosamente" });
   } catch (error) {
-    next(error);
+    console.log("Error al registrar usuario:", error.message);
+    return null;
   }
 }
 
@@ -92,7 +93,7 @@ async function loginUser(req, res, next) {
 }
 
 //? Genera un nombre aleatorio si no se proporciona uno
-async function generateRandomName() {
+function generateRandomName() {
   const randomName = uniqueNamesGenerator({
     dictionaries: [colors, animals, adjectives, names],
     separator: " ",
