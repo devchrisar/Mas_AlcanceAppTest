@@ -7,7 +7,7 @@ const captureResponseData = async (req, res) => {
       //? si hay un objeto res y contiene un objeto locals con un objeto responseData, captura la respuesta de la solicitud
       return await res.locals.responseData;
     }
-    if (res?.hasOwnProperty("body"))  {
+    if (res?.hasOwnProperty("body")) {
       //? si la solicitud contiene un cuerpo, captura la respuesta de la solicitud
       return await res.body;
     }
