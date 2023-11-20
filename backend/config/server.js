@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import Redoc from "redoc-express";
 import connectDB from "../src/models/db.model.js";
+import { configurePassport } from "../src/models/auth.model.js";
 //? rutas
 import routes from "../src/routes/index.routes.js";
 
@@ -23,6 +24,8 @@ class Server {
     this.routes();
     //? conectar a la base de datos
     connectDB();
+    //? configurar autenticación
+    configurePassport();
   }
   middlewares() {
     //? allow CORS (Cross-Origin Resource Sharing) for all origins
