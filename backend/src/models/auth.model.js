@@ -21,7 +21,7 @@ const configurePassport = () => {
       } catch (error) {
         return done(error, false);
       }
-    })
+    }),
   );
 };
 

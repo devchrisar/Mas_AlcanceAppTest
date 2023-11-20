@@ -2,13 +2,19 @@ import axios from "axios";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import UserModel from "../models/user.model.js";
-import { uniqueNamesGenerator, names, animals, colors, adjectives } from "unique-names-generator";
+import {
+  uniqueNamesGenerator,
+  names,
+  animals,
+  colors,
+  adjectives,
+} from "unique-names-generator";
 
 // ?Controlador para obtener todos los usuarios
 async function getAllUsers(req, res, next) {
   try {
     const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/users"
+      "https://jsonplaceholder.typicode.com/users",
     );
     const users = response.data;
     res.json(users);
