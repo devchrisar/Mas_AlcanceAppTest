@@ -5,7 +5,7 @@ import RequestModel from "../models/audit.model.js";
 async function getPosts(req, res, next) {
   try {
     const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/posts"
+      "https://jsonplaceholder.typicode.com/posts",
     );
     const posts = response.data;
     res.json(posts);
@@ -20,7 +20,7 @@ async function getAlbumsByUserId(req, res, next) {
 
   try {
     const response = await axios.get(
-      `https://jsonplaceholder.typicode.com/albums?userId=${userId}`
+      `https://jsonplaceholder.typicode.com/albums?userId=${userId}`,
     );
     const albums = response.data;
     res.json(albums);
@@ -82,7 +82,7 @@ async function editRequest(req, res, next) {
     const updatedRequest = await RequestModel.findByIdAndUpdate(
       req.params.requestId,
       req.body,
-      { new: true }
+      { new: true },
     );
 
     res.json(updatedRequest);
@@ -103,7 +103,7 @@ async function deleteRequest(req, res, next) {
     }
 
     const deletedRequest = await RequestModel.findByIdAndDelete(
-      req.params.requestId
+      req.params.requestId,
     );
 
     if (!deletedRequest) {
