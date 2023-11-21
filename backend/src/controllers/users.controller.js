@@ -51,7 +51,7 @@ async function getAllUsers(req, res, next) {
     } else {
       // Si no hay un término de búsqueda, obtengo todos los usuarios de la API externa
       const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/users"
+        "https://jsonplaceholder.typicode.com/users",
       );
       const users = response.data;
       res.json(users);
