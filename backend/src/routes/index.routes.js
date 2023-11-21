@@ -3,6 +3,7 @@ import {
   getAllUsers,
   createUser,
   loginUser,
+  getUserById,
 } from "../controllers/users.controller.js";
 import {
   getPosts,
@@ -31,6 +32,9 @@ router.route("/api/users").get(getAllUsers);
 //? Ruta para registrar e iniciar sesión (POST) usuarios
 router.route("/api/register").post(createUser);
 router.route("/api/login").post(loginUser);
+
+// ?Ruta para ver el perfil (GET) del usuario
+router.route("/api/profile/:userId").get(getUserById);
 
 // ?Ruta para leer (GET)  publicaciones (posts)
 router.route("/api/posts").get(getPosts);
