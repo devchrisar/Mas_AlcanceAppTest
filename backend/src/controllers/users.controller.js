@@ -14,7 +14,7 @@ import {
 async function getAllUsers(req, res, next) {
   try {
     const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/users",
+      "https://jsonplaceholder.typicode.com/users"
     );
     const users = response.data;
     res.json(users);
@@ -37,6 +37,7 @@ async function getAllUsers(req, res, next) {
 
 //? Controlador para registrar un nuevo usuario
 async function createUser(req, res, next) {
+  console.log("Body received:", req.body);
   const { email, password, name, lastName } = req.body;
 
   // Genera un nombre y apellido aleatorios si no se proporcionan
@@ -51,6 +52,7 @@ async function createUser(req, res, next) {
     }
 
     // Encripta la contraseña con un salt de 10 rounds
+    console.log("Password:", password);
     const hashedPassword = bcrypt.hashSync(password, 10);
 
     // Crea un nuevo usuario
@@ -61,7 +63,9 @@ async function createUser(req, res, next) {
       lastName: generatedLastName,
     });
 
-    // Guarda el nuevo usuario en la base de datos
+    // Guarda el nuevo usuario en la base de datos y asigna el id del documento de mongo como su userId
+    await newUser.save();
+    newUser.userId = newUser._id;
     await newUser.save();
 
     return res.status(201).json({ message: "Usuario registrado exitosamente" });
