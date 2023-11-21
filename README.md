@@ -4,6 +4,8 @@
 
 ¡Bienvenido al proyecto! Este repositorio contiene tanto el código backend como frontend para un sistema de gestión de usuarios, publicaciones y álbumes. A continuación, encontrarás instrucciones detalladas sobre cómo configurar y ejecutar la aplicación.
 
+[![DeepSource](https://app.deepsource.com/gh/devchrisar/Mas_AlcanceAppTest.svg/?label=active+issues&show_trend=true&token=UwA9rTiO7ejR8w07iqwSr8Gn)](https://app.deepsource.com/gh/devchrisar/Mas_AlcanceAppTest/) [![DeepSource](https://app.deepsource.com/gh/devchrisar/Mas_AlcanceAppTest.svg/?label=resolved+issues&show_trend=true&token=UwA9rTiO7ejR8w07iqwSr8Gn)](https://app.deepsource.com/gh/devchrisar/Mas_AlcanceAppTest/)
+
 ## Configuración del Backend
 
 ### Paso 1: Instalación de Paquetes
