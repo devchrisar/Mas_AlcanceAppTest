@@ -38,6 +38,42 @@ async function getUserById(req, res, next) {
   }
 }
 
+//? Controlador para actualizar el perfil de un usuario
+async function updateUser(req, res, next) {
+  try {
+    const userId = req.params.userId;
+    const { name, lastName, email } = req.body;
+
+    // Verifico si el usuario existe en la base de datos
+    const existingUser = await UserModel.findById(userId);
+    if (!existingUser) {
+      return res.status(404).json({ message: "Usuario no encontrado" });
+    }
+
+    // Actualizo los campos proporcionados
+    if (name) existingUser.name = name;
+    if (lastName) existingUser.lastName = lastName;
+    if (email) existingUser.email = email;
+
+    // Guardo los cambios en la base de datos
+    await existingUser.save();
+
+    // Devuelvo los datos actualizados del usuario
+    const {
+      userId: _,
+      _id,
+      __v,
+      password,
+      ...updatedUserData
+    } = existingUser.toObject();
+    res.json(updatedUserData);
+  } catch (error) {
+    // Manejo de errores
+    console.error("Error al actualizar el perfil:", error.message);
+    next(error);
+  }
+}
+
 // ?Controlador para obtener todos los usuarios
 async function getAllUsers(req, res, next) {
   try {
@@ -51,7 +87,7 @@ async function getAllUsers(req, res, next) {
     } else {
       // Si no hay un término de búsqueda, obtengo todos los usuarios de la API externa
       const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/users",
+        "https://jsonplaceholder.typicode.com/users"
       );
       const users = response.data;
       res.json(users);
@@ -104,7 +140,7 @@ async function createUser(req, res, next) {
 
     // Guarda el nuevo usuario en la base de datos y asigna el id del documento de mongo como su userId
     await newUser.save();
-    newUser.userId = newUser._id;
+    newUser.userId = newUser._id.toString(); // convierte el id de mongo en un string para que sea compatible al actualizar el perfil
     await newUser.save();
 
     return res.status(201).json({ message: "Usuario registrado exitosamente" });
@@ -145,4 +181,4 @@ function generateRandomName() {
   return randomName;
 }
 
-export { getAllUsers, createUser, loginUser, getUserById };
+export { getAllUsers, createUser, loginUser, getUserById, updateUser };

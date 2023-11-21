@@ -4,6 +4,7 @@ import {
   createUser,
   loginUser,
   getUserById,
+  updateUser,
 } from "../controllers/users.controller.js";
 import {
   getPosts,
@@ -35,6 +36,9 @@ router.route("/api/login").post(loginUser);
 
 // ?Ruta para ver el perfil (GET) del usuario
 router.route("/api/profile/:userId").get(getUserById);
+
+// ?Ruta para actualizar (PUT) el perfil del usuario - SOLO (AUTENTICADO)
+router.route("/api/profile/:userId").put(authenticate, updateUser);
 
 // ?Ruta para leer (GET)  publicaciones (posts)
 router.route("/api/posts").get(getPosts);

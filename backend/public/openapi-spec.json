@@ -37,6 +37,39 @@
         }
       }
     },
+    "/api/users?search={search}": {
+      "get": {
+        "summary": "Get a list of users by providing a search term",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "path",
+            "description": "Search for users by name",
+            "required": "true",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "id": 1,
+                    "name": "John Doe",
+                    "lastName": "St",
+                    "email": "john@example.com"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/docs": {
       "get": {
         "summary": "Get API documentation",
@@ -48,6 +81,460 @@
             }
           }
         }
+      }
+    },
+    "/api/": {
+      "get": {
+        "summary": "Get API Home Page",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "text/html": {}
+            }
+          }
+        }
+      }
+    },
+    "/api/register": {
+      "post": {
+        "summary": "Register a new user",
+        "requestBody": {
+          "description": "User information for registration",
+          "required": "true",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/src/models/user.model"
+              },
+              "example": {
+                "email": "john@example.com",
+                "name": "John Doe",
+                "lastName": "St",
+                "password": "123456"
+              },
+              "responses": {
+                "201": {
+                  "description": "Usuario registrado exitosamente",
+                  "content": {
+                    "text/html": {}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/login": {
+      "post": {
+        "summary": "Login a user",
+        "requestBody": {
+          "description": "User credentials for login",
+          "required": "true",
+          "content": {
+            "application/json": {
+              "example": {
+                "email": "john@example.com",
+                "password": "123456"
+              }
+            },
+            "responses": {
+              "201": {
+                "description": "Login successful",
+                "content": {
+                  "application/json": {
+                    "example": {
+                      "token": "JWT_TOKEN_HERE"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/albums": {
+      "get": {
+        "summary": "Get a list of albums",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "userId": 1,
+                    "id": 1,
+                    "title": "quidem molestiae enim"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/albums/?userId={userId}": {
+      "get": {
+        "summary": "Get a list of albums by providing a user id",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "Search for albums by user id",
+            "required": "true",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "userId": 1,
+                    "id": 1,
+                    "title": "quidem molestiae enim"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/posts": {
+      "get": {
+        "summary": "Get a list of posts",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "userId": 1,
+                    "id": 1,
+                    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+                    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit"
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    " /api/requests": {
+      "post": {
+        "summary": "Create a new request",
+        "requestBody": {
+          "description": "Request information for creation",
+          "required": "true",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/src/models/audit.model"
+              },
+              "example": {
+                "method": "GET",
+                "endpoint": "/api/users",
+                "responseData": {
+                  "ejemplo": "hola soy chris"
+                }
+              },
+              "responses": {
+                "201": {
+                  "description": "Request created successfully",
+                  "content": {
+                    "application/json": {
+                      "method": "GET",
+                      "endpoint": "/api/users",
+                      "responseData": {
+                        "ejemplo": "hola soy chris"
+                      },
+                      "userId": "655bd59b8bdb6080400cc8b2",
+                      "_id": "655c01b1f3abb4d53a8a350f",
+                      "date": "2023-11-21T01:02:41.882Z",
+                      "__v": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/requests": {
+      "get": {
+        "summary": "Get a list of requests",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "method": "GET",
+                    "endpoint": "/api/users",
+                    "responseData": {
+                      "ejemplo": "hola soy chris"
+                    },
+                    "userId": "655bd59b8bdb6080400cc8b2",
+                    "_id": "655c01b1f3abb4d53a8a350f",
+                    "date": "2023-11-21T01:02:41.882Z",
+                    "__v": 0
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/requests?userId={userId}": {
+      "get": {
+        "summary": "Get a list of requests by providing a user id",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "Search for requests by user id",
+            "required": "true",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": [
+                  {
+                    "method": "GET",
+                    "endpoint": "/api/users",
+                    "responseData": {
+                      "ejemplo": "hola soy chris"
+                    },
+                    "userId": "655bd59b8bdb6080400cc8b2",
+                    "_id": "655c01b1f3abb4d53a8a350f",
+                    "date": "2023-11-21T01:02:41.882Z",
+                    "__v": 0
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/profile/{userId}": {
+      "get": {
+        "summary": "show user profile",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "Search for user profile by user id",
+            "required": "true",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "name": "John Doe",
+                  "lastName": "St",
+                  "email": "john@example.com"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/requests/{requestId}": {
+      "delete": {
+        "summary": "Delete a request by request id",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "description": "Specify the request id to delete",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "El registro se eliminó exitosamente"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": ["JWT"]
+          }
+        ]
+      },
+      "components": {
+        "securitySchemes": {
+          "BearerAuth": {
+            "type": "http",
+            "scheme": "bearer",
+            "bearerFormat": "JWT"
+          }
+        }
+      }
+    },
+    "/api/requests/{requestsId}": {
+      "patch": {
+        "summary": "Update a request by request id",
+        "parameters": [
+          {
+            "name": "requestId",
+            "in": "path",
+            "description": "Specify the request id to update",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Request information for update",
+          "required": "true",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/src/models/audit.model"
+              },
+              "example": {
+                "method": "GET",
+                "endpoint": "/api/users",
+                "responseData": {
+                  "ejemplo": "hola soy chris"
+                }
+              },
+              "responses": {
+                "201": {
+                  "description": "Request updated successfully",
+                  "content": {
+                    "application/json": {
+                      "method": "GET",
+                      "endpoint": "/api/users",
+                      "responseData": {
+                        "ejemplo": "hola soy chris"
+                      },
+                      "userId": "655bd59b8bdb6080400cc8b2",
+                      "_id": "655c01b1f3abb4d53a8a350f",
+                      "date": "2023-11-21T01:02:41.882Z",
+                      "__v": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "example": {
+                  "message": "El registro se actualizó exitosamente"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": ["JWT"]
+          }
+        ]
+      }
+    },
+    " /api/profile/{userId}": {
+      "put": {
+        "summary": "Update user profile by user id",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "Specify the user id to update profile",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "User profile information for update",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/src/models/user.model"
+              },
+              "example": {
+                "name": "John",
+                "email": "john@example.com",
+                "lastName": "Doe"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Profile updated successfully",
+            "content": {
+              "application/json": {
+                "example": {
+                  "name": "John",
+                  "email": "john@example.com",
+                  "lastName": "Doe"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "BearerAuth": ["JWT"]
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   },
