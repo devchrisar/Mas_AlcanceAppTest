@@ -6,6 +6,8 @@ import {
   faFaceGrinHearts,
   faRetweet,
 } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
+import { FindAlbumByidUsecase } from '@app/data/services/api/usercases/find-albumByid.usercase';
 
 @Component({
   selector: 'app-post-modal',
@@ -17,16 +19,30 @@ import {
 export class PostModalComponent {
   isOpen = false;
   posts: any[] = [];
+  userId: number | null = null;
   faComment = faComment;
   faFaceGrinHearts = faFaceGrinHearts;
   faRetweet = faRetweet;
 
-  openModal(posts: any[]): void {
+  //? se obtiene la instancia del router para poder redirigir a la ruta de albums y el caso de uso para obtener el album por id
+  constructor(
+    private router: Router,
+    private findAlbumByIdUsecase: FindAlbumByidUsecase
+  ) {}
+
+  openModal(posts: any[], userId: number): void {
     this.posts = posts;
+    this.userId = userId;
     this.isOpen = true;
   }
 
   closeModal(): void {
     this.isOpen = false;
+  }
+
+  goToAlbum(): void {
+    if (this.userId !== null) {
+      this.router.navigate(['/albums'], { queryParams: { userId: this.userId.toString() } });
+    }
   }
 }

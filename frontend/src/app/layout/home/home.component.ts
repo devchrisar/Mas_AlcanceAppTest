@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
     this.listPostsUsecase.execute(userId).subscribe({
       next: (posts) => {
         // Pasa los posts al modal y abre el modal
-        this.postModal.openModal(posts);
+        this.postModal.openModal(posts, userId);
       },
       error: (error) => {
         console.log('Error fetching posts: ', error);

@@ -5,7 +5,7 @@
     <div class="box">
       <div class="header">
         <h2 class="title is-4 has-text-centered has-text-info">Posts</h2>
-        <button class="button is-primary is-large">Albums</button>
+        <button class="button is-primary is-large" (click)="goToAlbum()">Albums</button>
       </div>
       <ul>
         <li *ngFor="let post of posts">
