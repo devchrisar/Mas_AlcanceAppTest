@@ -10,7 +10,10 @@ const routes: Routes = [
     //? es el que tiene el router-outlet y dentro de este se cargaran los demas componentes
     path: '',
     component: SkeletonComponent,
-    children: [{ path: '', component: HomeComponent }, { path: 'albums', component: AlbumsComponent }],
+    children: [
+      { path: '', component: HomeComponent },
+      { path: 'albums', component: AlbumsComponent },
+    ],
   },
 ];
 

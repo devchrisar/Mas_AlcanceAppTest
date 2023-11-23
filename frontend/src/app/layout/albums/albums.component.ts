@@ -6,7 +6,7 @@ import { AlbumModel } from '@app/data/services/api/models/album.model';
 @Component({
   selector: 'app-albums',
   templateUrl: './albums.component.html',
-  styleUrls: ['./albums.component.scss']
+  styleUrls: ['./albums.component.scss'],
 })
 export class AlbumsComponent {
   albums: AlbumModel[] = [];
@@ -14,8 +14,8 @@ export class AlbumsComponent {
   //? se obtiene el id del usuario y se obtiene el album por id
   constructor(
     private route: ActivatedRoute,
-    private findAlbumByIdUsecase: FindAlbumByidUsecase
-  ) { }
+    private findAlbumByIdUsecase: FindAlbumByidUsecase,
+  ) {}
 
   ngOnInit(): void {
     //? obtiene el id del usuario de la ruta

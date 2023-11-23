@@ -28,7 +28,7 @@ export class PostModalComponent {
   //? se obtiene la instancia del router para poder redirigir a la ruta de albums y el caso de uso para obtener el album por id
   constructor(
     private router: Router,
-    private findAlbumByIdUsecase: FindAlbumByidUsecase
+    private findAlbumByIdUsecase: FindAlbumByidUsecase,
   ) {}
 
   openModal(posts: PostModel[], userId: number): void {
@@ -43,7 +43,9 @@ export class PostModalComponent {
 
   goToAlbum(): void {
     if (this.userId !== null) {
-      this.router.navigate(['/albums'], { queryParams: { userId: this.userId.toString() } });
+      this.router.navigate(['/albums'], {
+        queryParams: { userId: this.userId.toString() },
+      });
     }
   }
 }

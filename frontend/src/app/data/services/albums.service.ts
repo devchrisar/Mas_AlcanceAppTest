@@ -8,7 +8,7 @@ import { AlbumModel } from '@data/services/api/models/album.model';
   providedIn: 'root',
 })
 export class AlbumsService {
-    private apiUrl = `${API_BASE_URL}${ALBUMS_ENDPOINT}`;
+  private apiUrl = `${API_BASE_URL}${ALBUMS_ENDPOINT}`;
 
   constructor(private http: HttpClient) {}
 
