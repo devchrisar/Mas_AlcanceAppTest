@@ -8,7 +8,7 @@ import { PostsService } from '@data/services/posts.service';
 export class ListPostsUsecase {
   constructor(private postsService: PostsService) {}
 
-  execute(): Observable<any[]> {
-    return this.postsService.getPosts();
+  execute(userId: number): Observable<any[]> {
+    return this.postsService.getPosts(userId);
   }
 }

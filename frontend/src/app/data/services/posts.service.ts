@@ -11,7 +11,9 @@ export class PostsService {
 
   constructor(private http: HttpClient) {}
 
-  getPosts(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  //? se obtienen los posts de un usuario en especifico por medio de su id
+  getPosts(userId: number): Observable<any[]> {
+    const url = `${this.apiUrl}?userId=${userId}`;
+    return this.http.get<any[]>(url);
   }
 }

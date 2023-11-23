@@ -1,1 +1,45 @@
-/*# sourceMappingURL=footer.component.css.map */
+.footer {
+  background-color: #f5f5f5;
+  padding: 2rem 0;
+  color: #333;
+}
+.footer .container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.footer .columns {
+  margin-bottom: 2rem;
+}
+.footer h3 {
+  margin-bottom: 1rem;
+}
+.footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer ul li {
+  margin-bottom: 0.5rem;
+}
+.footer a {
+  color: #000;
+  text-decoration: none;
+}
+.footer .social-links {
+  margin-bottom: 2rem;
+}
+.footer .social-links li {
+  margin-right: 1rem;
+}
+.footer .social-links i {
+  font-size: 1.5rem;
+}
+.footer .has-text-centered {
+  text-align: center;
+}
+
+.columns > img {
+  margin-left: auto;
+  width: 250px;
+  height: 250px;
+}/*# sourceMappingURL=footer.component.css.map */
