@@ -9,8 +9,6 @@ import { RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [CommonModule, HeaderComponent, FooterComponent, RouterOutlet],
   templateUrl: './skeleton.component.html',
-  styleUrls: ['./skeleton.component.scss']
+  styleUrls: ['./skeleton.component.scss'],
 })
-export class SkeletonComponent {
-
-}
+export class SkeletonComponent {}

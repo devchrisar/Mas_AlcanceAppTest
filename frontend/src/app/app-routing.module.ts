@@ -7,14 +7,12 @@ const routes: Routes = [
   {
     path: '',
     component: SkeletonComponent,
-    children: [
-      { path: '', component: HomeComponent },
-    ]
-  }
+    children: [{ path: '', component: HomeComponent }],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

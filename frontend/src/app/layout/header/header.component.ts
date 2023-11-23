@@ -8,7 +8,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
   standalone: true,
   imports: [CommonModule, FontAwesomeModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
   faUser = faUser;

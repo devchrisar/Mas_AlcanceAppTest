@@ -10,17 +10,18 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
   imports: [CommonModule, HttpClientModule],
   providers: [HttpClient],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   users: any[] = [];
 
-  constructor(private injector: Injector) {
-  }
+  constructor(private injector: Injector) {}
 
   ngOnInit(): void {
     //? se llama al caso de uso para listar usuarios despues de que se halla recibido la respuesta del servicio de usuarios
-    const listUsersUsecase = new ListUsersUsecase(this.injector.get(UsersService));
+    const listUsersUsecase = new ListUsersUsecase(
+      this.injector.get(UsersService),
+    );
     listUsersUsecase.execute().subscribe({
       next: (data) => {
         this.users = data;
@@ -28,7 +29,7 @@ export class HomeComponent implements OnInit {
       },
       error: (error) => {
         console.log('Error fetching users: ', error);
-      }
+      },
     });
   }
 
