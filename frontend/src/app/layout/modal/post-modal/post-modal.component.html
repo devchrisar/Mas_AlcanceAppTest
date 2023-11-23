@@ -14,7 +14,10 @@
             <p>{{ post.body }}</p>
             <div class="icons">
               <fa-icon [icon]="faComment" class="icon comment-icon"></fa-icon>
-              <fa-icon [icon]="faFaceGrinHearts" class="icon hearts-icon"></fa-icon>
+              <fa-icon
+                [icon]="faFaceGrinHearts"
+                class="icon hearts-icon"
+              ></fa-icon>
               <fa-icon [icon]="faRetweet" class="icon retweet-icon"></fa-icon>
             </div>
           </div>
@@ -23,5 +26,9 @@
     </div>
   </div>
 
-  <button class="modal-close is-large" aria-label="close" (click)="closeModal()"></button>
+  <button
+    class="modal-close is-large"
+    aria-label="close"
+    (click)="closeModal()"
+  ></button>
 </div>

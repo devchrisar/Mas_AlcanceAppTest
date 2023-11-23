@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UsersService } from '@data/services/users.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -18,8 +18,13 @@ export class HomeComponent implements OnInit {
   users: any[] = [];
 
   //? se obtiene la instancia del componente modal para poder abrirlo desde el componente padre (home)
-  @ViewChild(PostModalComponent, {static: false}) postModal!: PostModalComponent;
-  constructor(private listUsersUsecase: ListUsersUsecase, private userService: UsersService, private listPostsUsecase: ListPostsUsecase) {}
+  @ViewChild(PostModalComponent, { static: false })
+  postModal!: PostModalComponent;
+  constructor(
+    private listUsersUsecase: ListUsersUsecase,
+    private userService: UsersService,
+    private listPostsUsecase: ListPostsUsecase,
+  ) {}
 
   ngOnInit(): void {
     //? se llama al caso de uso para listar usuarios despues de que se halla recibido la respuesta del servicio de usuarios
