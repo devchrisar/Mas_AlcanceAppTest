@@ -1,0 +1,51 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "outDir": "./dist/out-tsc",
+    "baseUrl": "./",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "declaration": false,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "ES2022",
+    "useDefineForClassFields": false,
+    "lib": ["ES2022", "dom"],
+    "paths": {
+      "@app/*": ["src/app/*"],
+      "@core/*": ["src/app/core/*"],
+      "@data/*": ["src/app/data/*"],
+      "@data/constants/*": ["src/app/data/constants/*"],
+      "@data/interfaces/*": ["src/app/data/interfaces/*"],
+      "@data/mocks/*": ["src/app/data/mocks/*"],
+      "@data/services/*": ["src/app/data/services/*"],
+      "@data/services/api/*": ["src/app/data/services/api/*"],
+      "@data/services/api/models/*": ["src/app/data/services/api/models/*"],
+      "@data/services/api/usercases/*": [
+        "src/app/data/services/api/usercases/*"
+      ],
+      "@layout/header/*": ["src/app/layout/header/*"],
+      "@layout/footer/*": ["src/app/layout/footer/*"],
+      "@layout/home/*": ["src/app/layout/home/*"],
+      "@layout/skeleton/*": ["src/app/layout/skeleton/*"],
+      "@media/*": ["frontend/media/*"],
+      "@assets/*": ["src/assets/*"],
+      "@styles/*": ["src/styles/*"]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}
