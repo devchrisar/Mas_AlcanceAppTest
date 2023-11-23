@@ -1,0 +1,15 @@
+.card-image {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.media-content > p {
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

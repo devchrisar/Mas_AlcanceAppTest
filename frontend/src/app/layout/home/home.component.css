@@ -1,0 +1,13 @@
+.card-image {
+  cursor: pointer;
+}
+.card-image:hover {
+  opacity: 0.8;
+}
+
+.media-content > p {
+  cursor: pointer;
+}
+.media-content > p:hover {
+  opacity: 0.8;
+}/*# sourceMappingURL=home.component.css.map */
