@@ -37,6 +37,7 @@
       "@layout/footer/*": ["src/app/layout/footer/*"],
       "@layout/home/*": ["src/app/layout/home/*"],
       "@layout/skeleton/*": ["src/app/layout/skeleton/*"],
+      "@layout/modal/*": ["src/app/layout/modal/*"],
       "@media/*": ["frontend/media/*"],
       "@assets/*": ["src/assets/*"],
       "@styles/*": ["src/styles/*"]

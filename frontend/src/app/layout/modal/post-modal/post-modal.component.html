@@ -1,0 +1,27 @@
+<div *ngIf="isOpen" class="modal is-active">
+  <div class="modal-background" (click)="closeModal()"></div>
+
+  <div class="modal-content">
+    <div class="box">
+      <div class="header">
+        <h2 class="title is-4 has-text-centered has-text-info">Posts</h2>
+        <button class="button is-primary is-large">Albums</button>
+      </div>
+      <ul>
+        <li *ngFor="let post of posts">
+          <div class="post-item">
+            <p class="subtitle is-5 has-text-primary">{{ post.title }}</p>
+            <p>{{ post.body }}</p>
+            <div class="icons">
+              <fa-icon [icon]="faComment" class="icon comment-icon"></fa-icon>
+              <fa-icon [icon]="faFaceGrinHearts" class="icon hearts-icon"></fa-icon>
+              <fa-icon [icon]="faRetweet" class="icon retweet-icon"></fa-icon>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <button class="modal-close is-large" aria-label="close" (click)="closeModal()"></button>
+</div>
