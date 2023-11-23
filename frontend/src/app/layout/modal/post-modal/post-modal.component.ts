@@ -8,6 +8,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { FindAlbumByidUsecase } from '@app/data/services/api/usercases/find-albumByid.usercase';
+import { PostModel } from '@app/data/services/api/models/post.model';
 
 @Component({
   selector: 'app-post-modal',
@@ -18,7 +19,7 @@ import { FindAlbumByidUsecase } from '@app/data/services/api/usercases/find-albu
 })
 export class PostModalComponent {
   isOpen = false;
-  posts: any[] = [];
+  posts: PostModel[] = [];
   userId: number | null = null;
   faComment = faComment;
   faFaceGrinHearts = faFaceGrinHearts;
@@ -30,7 +31,7 @@ export class PostModalComponent {
     private findAlbumByIdUsecase: FindAlbumByidUsecase
   ) {}
 
-  openModal(posts: any[], userId: number): void {
+  openModal(posts: PostModel[], userId: number): void {
     this.posts = posts;
     this.userId = userId;
     this.isOpen = true;

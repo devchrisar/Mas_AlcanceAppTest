@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { API_BASE_URL, USERS_ENDPOINT } from '@data/constants/constants';
+import { UserModel } from '@data/services/api/models/user.model';
+import { ExternalUserModel } from '@data/services/api/models/external-users.model';
 
 @Injectable({
   providedIn: 'root',
@@ -13,19 +15,12 @@ export class UsersService {
 
   constructor(private http: HttpClient) {}
 
-  getAllUsers(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
+  getAllUsers(): Observable<ExternalUserModel[]> {
+    return this.http.get<ExternalUserModel[]>(this.apiUrl);
   }
 
-  getUserById(userId: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${userId}`);
-  }
-
-  createUser(user: any): Observable<any> {
-    return this.http.post<any>(this.apiUrl, user);
-  }
-
-  updateUser(userId: string, updatedUserData: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${userId}`, updatedUserData);
+  getUserBySearch(search: string): Observable<UserModel[]> {
+    const url = `${this.apiUrl}?search=${search}`;
+    return this.http.get<UserModel[]>(url);
   }
 }

@@ -4,7 +4,8 @@ import { UsersService } from '@data/services/users.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { PostModalComponent } from '@layout/modal/post-modal/post-modal.component';
 import { ListUsersUsecase } from '@app/data/services/api/usercases/list-users.usercase';
-import { ListPostsUsecase } from '@app/data/services/api/usercases/list-posts.usercase';
+import { ListPostsByidUsecase } from '@app/data/services/api/usercases/list-postsByid.usercase';
+import { ExternalUserModel } from '@app/data/services/api/models/external-users.model';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,7 @@ import { ListPostsUsecase } from '@app/data/services/api/usercases/list-posts.us
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  users: any[] = [];
+  users: ExternalUserModel[] = [];
 
   //? se obtiene la instancia del componente modal para poder abrirlo desde el componente padre (home)
   @ViewChild(PostModalComponent, { static: false })
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private listUsersUsecase: ListUsersUsecase,
     private userService: UsersService,
-    private listPostsUsecase: ListPostsUsecase,
+    private ListPostsByidUsecase: ListPostsByidUsecase,
   ) {}
 
   ngOnInit(): void {
@@ -41,7 +42,7 @@ export class HomeComponent implements OnInit {
   }
 
   onClick(userId: number): void {
-    this.listPostsUsecase.execute(userId).subscribe({
+    this.ListPostsByidUsecase.execute(userId).subscribe({
       next: (posts) => {
         // Pasa los posts al modal y abre el modal
         this.postModal.openModal(posts, userId);

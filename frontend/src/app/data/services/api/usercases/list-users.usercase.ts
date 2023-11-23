@@ -2,6 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { UsersService } from '@data/services/users.service';
+import { ExternalUserModel } from '../models/external-users.model';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +10,7 @@ import { UsersService } from '@data/services/users.service';
 export class ListUsersUsecase {
   constructor(private usersService: UsersService) {}
 
-  execute(): Observable<any[]> {
+  execute(): Observable<ExternalUserModel[]> {
     return this.usersService.getAllUsers();
   }
 }

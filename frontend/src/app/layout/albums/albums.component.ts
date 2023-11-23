@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FindAlbumByidUsecase } from '@app/data/services/api/usercases/find-albumByid.usercase';
+import { AlbumModel } from '@app/data/services/api/models/album.model';
 
 @Component({
   selector: 'app-albums',
@@ -8,7 +9,7 @@ import { FindAlbumByidUsecase } from '@app/data/services/api/usercases/find-albu
   styleUrls: ['./albums.component.scss']
 })
 export class AlbumsComponent {
-  albums: any[] = [];
+  albums: AlbumModel[] = [];
 
   //? se obtiene el id del usuario y se obtiene el album por id
   constructor(
