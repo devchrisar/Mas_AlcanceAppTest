@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SkeletonComponent } from '@app/layout/skeleton/skeleton.component';
+//* Paginas
 import { HomeComponent } from '@app/layout/home/home.component';
 import { AlbumsComponent } from '@app/layout/albums/albums.component';
+import { RequestComponent } from './layout/logs/request/request.component';
 
 const routes: Routes = [
   {
@@ -13,6 +15,7 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'albums', component: AlbumsComponent },
+      { path: 'requests', component: RequestComponent },
     ],
   },
 ];

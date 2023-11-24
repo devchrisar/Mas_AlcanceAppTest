@@ -6,3 +6,4 @@ export const USERS_ENDPOINT = '/users';
 export const POSTS_ENDPOINT = '/posts';
 export const ALBUMS_ENDPOINT = '/albums';
 export const REQUESTS_ENDPOINT = '/requests';
+export const PROFILE_ENDPOINT = '/profile';

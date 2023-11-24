@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { FindAlbumByidUsecase } from '@app/data/services/api/usercases/find-albumByid.usercase';
 import { AlbumModel } from '@app/data/services/api/models/album.model';
 
 @Component({
   selector: 'app-albums',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './albums.component.html',
   styleUrls: ['./albums.component.scss'],
 })
