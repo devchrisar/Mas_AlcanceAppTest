@@ -6,10 +6,10 @@ import { RequestsService } from '@data/services/requests.service';
 @Injectable({
   providedIn: 'root',
 })
-export class EditRequestUseCase {
+export class GetRequestsByUserIdUseCase {
   constructor(private requestsService: RequestsService) {}
 
-  execute(requestId: string, updatedRequestData: RequestModel): Observable<RequestModel> {
-    return this.requestsService.editRequest(requestId, updatedRequestData);
+  execute(userId: number): Observable<RequestModel[]> {
+    return this.requestsService.getRequestsByUserId(userId);
   }
 }

@@ -6,10 +6,10 @@ import { ProfileService } from '@data/services/profile.service';
 @Injectable({
   providedIn: 'root',
 })
-export class ProfileUpdateUsecase {
+export class ProfileGetAllUsecase {
   constructor(private profileService: ProfileService) {}
 
-  execute(userId: string, updatedUserData: UserModel): Observable<UserModel> {
-    return this.profileService.updateUser(userId, updatedUserData);
+  execute(searchTerm: string): Observable<UserModel[]> {
+    return this.profileService.getAllUsers(searchTerm);
   }
 }

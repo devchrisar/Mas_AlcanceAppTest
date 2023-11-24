@@ -1,0 +1,37 @@
+.method-cell {
+  &.method-get {
+    color: purple; // Color para 'method GET'
+    font-weight: bold;
+  }
+
+  &.method-post {
+    color: green; // Color para 'method POST'
+    font-weight: bold;
+  }
+
+  &.method-delete {
+    color: red; // Color para 'method DELETE'
+    font-weight: bold;
+  }
+
+  &.method-patch {
+    color: rgb(193, 193, 0); // Color para 'method PATCH'
+    font-weight: bold;
+  }
+
+  &.method-put {
+    color: orange; // Color para 'method PUT'
+    font-weight: bold;
+  }
+}
+
+.mat-cell.mat-column-requestData,
+.mat-cell.mat-column-responseData {
+  white-space: pre-line; // Esto mantiene el formato JSON en varias líneas
+}
+
+.requestData-cell,
+.responseData-cell {
+  background-color: darkblue;
+  color: greenyellow;
+}
