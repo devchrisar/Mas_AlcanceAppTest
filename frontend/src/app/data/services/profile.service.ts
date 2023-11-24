@@ -12,7 +12,10 @@ export class ProfileService {
 
   constructor(private http: HttpClient) {}
 
-  updateUser(userId: string, updatedUserData: UserModel): Observable<UserModel> {
+  updateUser(
+    userId: string,
+    updatedUserData: UserModel,
+  ): Observable<UserModel> {
     const url = `${this.apiUrl}/${userId}`;
     return this.http.put<UserModel>(url, updatedUserData);
   }
@@ -35,8 +38,8 @@ export class ProfileService {
     return this.http.get<UserModel[]>(url);
   }
 
-    getUserById(userId: string): Observable<UserModel> {
+  getUserById(userId: string): Observable<UserModel> {
     const url = `${this.apiUrl}/${userId}`;
-    return this.http.get<UserModel>(url); 
-    }
+    return this.http.get<UserModel>(url);
+  }
 }

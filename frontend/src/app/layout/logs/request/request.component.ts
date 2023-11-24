@@ -7,18 +7,23 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
-
 @Component({
   selector: 'app-request',
   standalone: true,
   imports: [CommonModule, MatTableModule, MatPaginatorModule, MatSortModule],
   templateUrl: './request.component.html',
-  styleUrls: ['./request.component.scss']
+  styleUrls: ['./request.component.scss'],
 })
-
 export class RequestComponent implements OnInit {
   requests: RequestModel[] = [];
-  displayedColumns: string[] = ['date', 'method', 'endpoint', 'userId', 'responseData', 'requestData'];
+  displayedColumns: string[] = [
+    'date',
+    'method',
+    'endpoint',
+    'userId',
+    'responseData',
+    'requestData',
+  ];
   private requestsSubscription: Subscription | undefined;
 
   constructor(private getAllRequestsUseCase: GetAllRequestsUseCase) {}
@@ -35,7 +40,7 @@ export class RequestComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error loading requests:', error);
-      }
+      },
     });
   }
 
@@ -44,12 +49,12 @@ export class RequestComponent implements OnInit {
     return `method-${method.toLowerCase()}`;
   }
 
-    // Propiedades para paginación
-    pageSizeOptions: number[] = [5, 10, 25, 50];
-    pageSize: number = 10;
-    pageIndex: number = 0;
+  // Propiedades para paginación
+  pageSizeOptions: number[] = [5, 10, 25, 50];
+  pageSize: number = 10;
+  pageIndex: number = 0;
 
-      //? Método para manejar el cambio de página
+  //? Método para manejar el cambio de página
   onPageChange(event: PageEvent): void {
     this.pageSize = event.pageSize;
     this.pageIndex = event.pageIndex;

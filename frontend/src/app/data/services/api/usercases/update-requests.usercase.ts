@@ -9,7 +9,10 @@ import { RequestsService } from '@data/services/requests.service';
 export class EditRequestUseCase {
   constructor(private requestsService: RequestsService) {}
 
-  execute(requestId: string, updatedRequestData: RequestModel): Observable<RequestModel> {
+  execute(
+    requestId: string,
+    updatedRequestData: RequestModel,
+  ): Observable<RequestModel> {
     return this.requestsService.editRequest(requestId, updatedRequestData);
   }
 }
